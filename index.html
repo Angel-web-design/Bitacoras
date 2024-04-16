@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bitácora</title>
+    <style>
+      * {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      header {
+        background-color: #522508;
+        color: #fff;
+        padding: 10px 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 0 20px;
+      }
+      section {
+        background-color: #fff;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+      nav {
+        background-color: #522508;
+        color: #fff;
+        padding: 10px 20px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: none;
+      }
+      nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+      nav ul li {
+        margin-bottom: 10px;
+      }
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+      }
+      .menu-icon {
+        cursor: pointer;
+        display: block;
+        float: right;
+        position: absolute;
+        transform: scale(2);
+        right: 10%;
+      }
+      .close-btn {
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 20px;
+        cursor: pointer;
+        position: relative;
+        right: -80%;
+        transform: translateY(20px);
+        scale: 2;
+      }
+      .up {
+        position: fixed;
+        width: 50px;
+        height: 40px;
+        border-radius: 10px 0 0 10px;
+        top: calc(100% - 50px);
+        left: calc(100% - 50px);
+        background-color: #522508;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .up img {
+        filter: invert(100%);
+        width: 30px;
+      }
+      .logo {
+        width: 60px;
+        position: absolute;
+        left: 10%;
+      }
+      .accordion {
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      .accordion-item {
+        border-bottom: 4px solid #e2e2e2;
+      }
+      .accordion-item:focus {
+        outline: 2px solid blue;
+      }
+
+      .accordion-title {
+        background-color: #f4f4f4;
+        padding: 20px 0 20px 0;
+        cursor: pointer;
+      }
+
+      .accordion-content {
+        padding: 10px;
+        background-color: #fcfcfc;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#header" class="up">
+      <img src="./assets/arrow-up.svg" alt="" />
+    </a>
+    <header id="header">
+      <img src="./assets/favicon.png" class="logo" />
+      <h2>Bitácoras</h2>
+      <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
+    </header>
+    <nav id="main-menu">
+      <button class="close-btn" onclick="toggleMenu()">&times;</button>
+      <ul>
+        <li><a href="#entrada1">Entrada 1</a></li>
+        <li><a href="#entrada2">Entrada 2</a></li>
+        <li><a href="#entrada3">Entrada 3</a></li>
+        <li><a href="#entrada4">Entrada 4</a></li>
+        <li><a href="#entrada5">Entrada 5</a></li>
+        <li><a href="#entrada6">Entrada 6</a></li>
+        <li><a href="#entrada7">Entrada 7</a></li>
+      </ul>
+    </nav>
+    <div class="container accordion">
+      <section>
+        <h2 style="text-align: center;">Elaboración de productos con la cáscara de café como materia prima.</h2><hr>
+        <p>Texto descriptivo...</p>
+      </section>
+      <div class="accordion-item" id="entrada1">
+        <div class="accordion-title">Entrada 1</div>
+        <div class="accordion-content">
+          <p>Contenido 1.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item" id="entrada2">
+        <div class="accordion-title">Entrada 2</div>
+        <div class="accordion-content">
+          <p>Contenido 2.</p>
+        </div>
+      </div>
+      <div class="accordion-item" id="entrada3">
+        <div class="accordion-title">Entrada 3</div>
+        <div class="accordion-content">
+          <p>Contenido 2.</p>
+        </div>
+      </div>
+      <div class="accordion-item" id="entrada4">
+        <div class="accordion-title">Entrada 4</div>
+        <div class="accordion-content">
+          <p>Contenido 2.</p>
+        </div>
+      </div>
+      <div class="accordion-item" id="entrada5">
+        <div class="accordion-title">Entrada 5</div>
+        <div class="accordion-content">
+          <p>Contenido 2.</p>
+        </div>
+      </div>
+      <div class="accordion-item" id="entrada6">
+        <div class="accordion-title">Entrada 6</div>
+        <div class="accordion-content">
+          <p>Contenido 2.</p>
+        </div>
+      </div>
+      <div class="accordion-item" id="entrada7">
+        <div class="accordion-title">Entrada 7</div>
+        <div class="accordion-content">
+          <p>Contenido 2.</p>
+        </div>
+      </div>
+    </div>
+    <script>
+      const items = document.querySelectorAll(".accordion-item");
+
+      // Itera sobre cada elemento y agrega un evento de clic
+      items.forEach((item) => {
+        const title = item.querySelector(".accordion-title");
+        const content = item.querySelector(".accordion-content");
+
+        // Agrega el evento de clic al título
+        title.addEventListener("click", () => {
+          // Alternar la clase 'active' en el elemento de contenido
+          content.classList.toggle("active");
+
+          // Si el contenido está visible, ocúltalo; de lo contrario, muéstralo
+          if (content.classList.contains("active")) {
+            content.style.display = "block";
+          } else {
+            content.style.display = "none";
+          }
+        });
+      });
+      function toggleMenu() {
+        var menu = document.getElementById("main-menu");
+        if (menu.style.display === "block") {
+          menu.style.display = "none";
+        } else {
+          menu.style.display = "block";
+        }
+      }
+    </script>
+  </body>
+</html>
